@@ -4,7 +4,7 @@ jdk:
 before_script:
   - chmod +x gradlew
 script:
-  - ./gradlew clean test codeCoverageReport
+  - ./gradlew clean test
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
