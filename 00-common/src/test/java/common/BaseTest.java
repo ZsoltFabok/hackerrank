@@ -3,10 +3,9 @@ package common;
 import org.junit.After;
 import org.junit.Before;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class BaseTest {
     private InputStream origIn;
@@ -34,5 +33,18 @@ public class BaseTest {
 
     protected String getOutput() {
         return out.toString();
+    }
+
+    protected void useFileInput(String filename) throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File input = new File(classLoader.getResource(filename).getFile());
+        System.setIn(new FileInputStream(input));
+    }
+
+    protected String getReferenceOutputFromFile(String filename) throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File output = new File(classLoader.getResource(filename).getFile());
+
+        return new String(Files.readAllBytes(Paths.get(output.getAbsolutePath())));
     }
 }
