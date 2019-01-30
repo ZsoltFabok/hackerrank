@@ -8,4 +8,5 @@ include '00-common',
         '07-heaps-find-the-running-median',
         '08-quicksort-one-partition',
         '09-pairs',
-        '10-making-anagrams'
+        '10-making-anagrams',
+        '11-sock-merchant'
