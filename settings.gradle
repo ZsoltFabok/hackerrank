@@ -11,4 +11,5 @@ include '00-common',
     '10-making-anagrams',
     '11-sock-merchant',
     '12-utopian-tree',
-    '13-counting-valleys'
+    '13-counting-valleys',
+    '14-jumping-on-the-clouds'
