@@ -13,4 +13,5 @@ include '00-common',
     '12-utopian-tree',
     '13-counting-valleys',
     '14-jumping-on-the-clouds',
-    '15-repeated-string'
+    '15-repeated-string',
+    '16-2d-arrays-ds-hourglass'
