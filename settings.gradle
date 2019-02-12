@@ -15,4 +15,5 @@ include '00-common',
         '14-jumping-on-the-clouds',
         '15-repeated-string',
         '16-2d-arrays-ds-hourglass',
-        '17-electronics-shop'
+        '17-electronics-shop',
+        '18-equalize-the-array'
