@@ -17,4 +17,5 @@ include '00-common',
         '16-2d-arrays-ds-hourglass',
         '17-electronics-shop',
         '18-equalize-the-array',
-        '19-left-rotation'
+        '19-left-rotation',
+        '20-acm-icpc-team'
