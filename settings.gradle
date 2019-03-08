@@ -19,4 +19,5 @@ include '00-common',
         '18-equalize-the-array',
         '19-left-rotation',
         '20-acm-icpc-team',
-        '21-minimum-swaps-2'
+        '21-minimum-swaps-2',
+        '22-array-manipulation'
