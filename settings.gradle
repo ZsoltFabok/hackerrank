@@ -20,4 +20,5 @@ include '00-common',
         '19-left-rotation',
         '20-acm-icpc-team',
         '21-minimum-swaps-2',
-        '22-array-manipulation'
+        '22-array-manipulation',
+        '23-sherlock-and-array'
