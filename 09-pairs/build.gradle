@@ -1,3 +1,3 @@
 dependencies {
-    testCompile project(":00-common").sourceSets.test.output
+    testImplementation project(":00-common").sourceSets.test.output
 }

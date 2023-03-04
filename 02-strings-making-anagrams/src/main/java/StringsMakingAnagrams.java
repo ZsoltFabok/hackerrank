@@ -11,7 +11,7 @@ public class StringsMakingAnagrams {
 
         for (int i = 0; i < shorter.length(); i++) {
             String c = shorter.substring(i, i + 1);
-            if(longer.contains(c)) {
+            if (longer.contains(c)) {
                 shorter = shorter.replaceFirst(c, "");
                 longer = longer.replaceFirst(c, "");
                 // well this is not nice, but will work

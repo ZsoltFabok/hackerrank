@@ -3,7 +3,7 @@ public class CountingValleys {
     static int countingValleys(int n, String s) {
         int height = 0;
         int valleyCount = 0;
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             if (s.charAt(i) == 'D') {
                 height--;
             } else {

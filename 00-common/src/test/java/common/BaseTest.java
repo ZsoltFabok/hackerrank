@@ -1,9 +1,15 @@
 package common;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
-import java.io.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -12,7 +18,7 @@ public class BaseTest {
     private PrintStream origOut;
     private ByteArrayOutputStream out;
 
-    @Before
+    @BeforeEach
     public void setup() {
         origIn = System.in;
         origOut = System.out;
@@ -21,7 +27,7 @@ public class BaseTest {
         System.setOut(new PrintStream(out));
     }
 
-    @After
+    @AfterEach
     public void teardown() {
         System.setOut(origOut);
         System.setIn(origIn);
@@ -32,19 +38,20 @@ public class BaseTest {
     }
 
     protected String getOutput() {
-        return out.toString();
+        return out.toString().replaceAll("\r", "");
     }
 
     protected void useFileInput(String filename) throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
-        File input = new File(classLoader.getResource(filename).getFile());
+        // Under windows the path contains %20 for spaces
+        File input = new File(classLoader.getResource(filename).getFile().replaceAll("%20", " "));
         System.setIn(new FileInputStream(input));
     }
 
     protected String getReferenceOutputFromFile(String filename) throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
-        File output = new File(classLoader.getResource(filename).getFile());
-
+        // Under windows the path contains %20 for spaces
+        File output = new File(classLoader.getResource(filename).getFile().replaceAll("%20", " "));
         return new String(Files.readAllBytes(Paths.get(output.getAbsolutePath())));
     }
 }

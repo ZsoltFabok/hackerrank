@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ZsoltFabok/hackerrank.svg?branch=master)](https://travis-ci.org/ZsoltFabok/hackerrank)
+![Build Status](https://github.com/ZsoltFabok/hackerrank/actions/workflows/main.yml/badge.svg)
 
 # hackerrank
 hackerrank solutions

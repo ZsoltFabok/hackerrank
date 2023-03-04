@@ -12,7 +12,7 @@ public class StacksBalancedBrackets {
 
         Stack<String> stack = new Stack<>();
 
-        for(String entry: expression.split("")) {
+        for (String entry: expression.split("")) {
             if (pairs.values().contains(entry)) {
                 // input is an opening bracket
                 stack.push(entry);
@@ -35,7 +35,7 @@ public class StacksBalancedBrackets {
         int t = in.nextInt();
         for (int a0 = 0; a0 < t; a0++) {
             String expression = in.next();
-            System.out.println( (isBalanced(expression)) ? "YES" : "NO" );
+            System.out.println((isBalanced(expression)) ? "YES" : "NO");
         }
     }
 }
