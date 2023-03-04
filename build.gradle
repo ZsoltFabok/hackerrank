@@ -1,35 +1,49 @@
+plugins {
+    id 'test-report-aggregation'
+    id 'jacoco-report-aggregation'
+}
+
+repositories {
+    mavenCentral()
+}
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
+    apply plugin: 'checkstyle'
 
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        testCompile 'junit:junit:4.12'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
     }
 
-    // Intellij and gradle use the same output dir
-    apply plugin: 'idea'
-    idea {
-        module {
-            inheritOutputDirs = false
-            outputDir = file("$buildDir/classes/main/")
-        }
-    }
-
-    // coveralls
-    jacocoTestReport {
-        reports {
-            xml.enabled = true // coveralls plugin depends on xml format report
-            html.enabled = true
-        }
+    test {
+        useJUnitPlatform()
     }
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.2.1'
+dependencies {
+    subprojects.findAll { it.pluginManager.hasPlugin('java') }.forEach {
+        testReportAggregation it
+    }
+
+    subprojects.findAll { it.pluginManager.hasPlugin('jacoco') }.forEach {
+        jacocoAggregation it
+    }
 }
 
+reporting {
+    reports {
+        testAggregateTestReport(AggregateTestReport) {
+            testType = TestSuiteType.UNIT_TEST
+        }
 
+        testCodeCoverageReport(JacocoCoverageReport) {
+            testType = TestSuiteType.UNIT_TEST
+        }
+    }
+}

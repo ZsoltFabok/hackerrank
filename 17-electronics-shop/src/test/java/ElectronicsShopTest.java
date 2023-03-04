@@ -1,7 +1,6 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ElectronicsShopTest {
     @Test
@@ -26,4 +25,5 @@ public class ElectronicsShopTest {
         int[] drives = {4};
         int budget = 5;
         assertEquals(-1, ElectronicsShop.getMoneySpent(keyboards, drives, budget));
-    }}
+    }
+}
