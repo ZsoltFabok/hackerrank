@@ -20,7 +20,7 @@ public class ArrayManipulation {
     }
 
     /* worked, but slow */
-    static long arrayManipulation2(int n, int[][] queries) {
+    static long arrayManipulation2(int[][] queries) {
         long max = 0L;
 
         Map<Integer, Long> data = new HashMap<>();

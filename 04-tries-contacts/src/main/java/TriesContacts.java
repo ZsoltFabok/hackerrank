@@ -13,10 +13,9 @@ public class TriesContacts {
             if ("add".equals(op)) {
                 for (int i = 0; i < contact.length(); i++) {
                     String entry = contact.substring(0, i + 1);
-                    if (!cache.containsKey(entry)) {
-                        cache.put(entry, 0);
-                    }
-                    cache.put(entry, cache.get(entry) + 1);
+                    // map::merge could be a good alternative
+                    cache.putIfAbsent(entry, 0);
+                    cache.computeIfPresent(entry, (key, value) -> cache.get(key) + 1);
                 }
             } else if ("find".equals(op)) {
                 Integer v = cache.get(contact);

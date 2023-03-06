@@ -44,13 +44,14 @@ public class HeapsFindTheRunningMedian {
             } else {
                 median = right.peek();
             }
-            System.out.printf("%.1f\n", median);
+            System.out.printf("%.1f%n", median);
         }
     }
 
     /**
      * The first version which is slow according to hackerrank.
      */
+    @SuppressWarnings({"java:S2185", "java:S1144", "java:S2184"})
     private static void printMedian(int[] numbers) {
         int[] array = new int[]{};
         for (int number : numbers) {

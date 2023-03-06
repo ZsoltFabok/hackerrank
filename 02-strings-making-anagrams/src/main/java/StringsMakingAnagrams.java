@@ -15,7 +15,7 @@ public class StringsMakingAnagrams {
                 shorter = shorter.replaceFirst(c, "");
                 longer = longer.replaceFirst(c, "");
                 // well this is not nice, but will work
-                i--;
+                i--; // NOSONAR
             }
         }
 

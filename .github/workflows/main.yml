@@ -35,6 +35,9 @@ jobs:
       - name: run checkstyle
         run: ./gradlew checkstyleMain checkstyleTest
 
+      - name: run sonarlint
+        run: ./gradlew sonarlintMain sonarlintTest
+
       - name: execute tests
         run: ./gradlew testAggregateTestReport --continue --parallel
 
