@@ -22,10 +22,9 @@ public class Pairs {
         int count = 0;
         for (int number : array) {
             // store number in cache
-            if (!cache.containsKey(number)) {
-                cache.put(number, 0);
-            }
-            cache.put(number, cache.get(number) + 1);
+            // map::merge could be a good alternative
+            cache.putIfAbsent(number, 0);
+            cache.computeIfPresent(number, (key, value) -> cache.get(key) + 1);
 
             // Check for pairs in the cache, and increase counter
             // with the current occurrences of the the pair

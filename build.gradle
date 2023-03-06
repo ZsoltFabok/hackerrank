@@ -1,6 +1,7 @@
 plugins {
     id 'test-report-aggregation'
     id 'jacoco-report-aggregation'
+    id 'name.remal.sonarlint' version '3.0.8'
 }
 
 repositories {
@@ -11,6 +12,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
     apply plugin: 'checkstyle'
+    apply plugin: 'name.remal.sonarlint'
 
     repositories {
         mavenCentral()
@@ -23,6 +25,29 @@ subprojects {
 
     test {
         useJUnitPlatform()
+    }
+
+    sonarLint {
+        isGeneratedCodeIgnored = false
+
+        rules {
+//            enable(
+//                    'java:S100', // Enable `java:S100` rule (that is disabled by default)
+//                    'java:S101', // Enable `java:S101` rule (that is disabled by default)
+//            )
+
+            disable(
+                    'java:S106',  // System.out rule: the sub projects print to stdout because it is required
+                    'java:S1220', // no need for named packages in this project
+                    'java:S1118', // same for private constructors
+                    'java:S5786', // let the test cases have the public modifier
+            )
+
+//            rule('java:S100') {
+//                property('format', '^[a-z][a-zA-Z0-9]*$') // Configure `format` property for `java:S100` rule
+//                properties = ['format': '^[a-z][a-zA-Z0-9]*$'] // `properties` - a mutable map of rule properties
+//            }
+        }
     }
 }
 

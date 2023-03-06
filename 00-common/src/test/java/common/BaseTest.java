@@ -13,6 +13,7 @@ import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+@SuppressWarnings({"java:S2187"})
 public class BaseTest {
     private InputStream origIn;
     private PrintStream origOut;

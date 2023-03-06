@@ -1,7 +1,8 @@
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Stack;
 
 public class StacksBalancedBrackets {
     public static boolean isBalanced(String expression) {
@@ -10,10 +11,10 @@ public class StacksBalancedBrackets {
         pairs.put("]", "[");
         pairs.put("}", "{");
 
-        Stack<String> stack = new Stack<>();
+        Deque<String> stack = new ArrayDeque<>();
 
         for (String entry: expression.split("")) {
-            if (pairs.values().contains(entry)) {
+            if (pairs.containsValue(entry)) {
                 // input is an opening bracket
                 stack.push(entry);
             } else if (!stack.isEmpty() && entry.length() > 0) {
@@ -21,7 +22,7 @@ public class StacksBalancedBrackets {
                 if (!s.equals(pairs.get(entry))) {
                     return false;
                 }
-            } else if (stack.isEmpty() && pairs.keySet().contains(entry)) {
+            } else if (stack.isEmpty() && pairs.containsKey(entry)) {
                 // input starts with a closing bracket
                 return false;
             }
